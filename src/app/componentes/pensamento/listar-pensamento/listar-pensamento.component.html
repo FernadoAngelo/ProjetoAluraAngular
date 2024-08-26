@@ -1,0 +1,19 @@
+<section class="container">
+  <header class="header d-flex">
+    <h2 class="ff-inter">Meu Mural</h2>
+    <button class="botao" routerLink="/criarPensamento">Adicionar pensamento</button>
+  </header>
+  @if (listaPensamentos.length > 0){
+    <div class="mural">
+      @for (item of listaPensamentos; track item){
+        <div>
+          <app-pensamento [pensamento]="item"></app-pensamento>
+        </div>
+      }
+    </div>
+  } @else {
+      <div class="ff-inter sem-pensamentos">
+        <p>Ainda não há pensamentos cadastrados!</p>
+      </div>
+  }
+</section>
