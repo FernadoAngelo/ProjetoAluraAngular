@@ -1,6 +1,6 @@
-import { Component, input } from '@angular/core';
-import { NgOptimizedImage, CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms'; 
+import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-cabecalho',
@@ -12,17 +12,23 @@ import { FormsModule } from '@angular/forms';
 export class CabecalhoComponent {
   nome = 'Fer';
 
+  valorTeste = 'Inicial';
+
   textoTeste = '';
 
   buttonName = 'Testando';
-  
+
   teste = false;
-  
-  testeFunction(){
+
+  testeFunction() {
     this.teste = !this.teste;
   }
 
-  showFramework(){
+  testeFunctionBind() {
+    this.valorTeste = 'valor alterado';
+  }
+
+  showFramework() {
     alert(this.textoTeste);
   }
 

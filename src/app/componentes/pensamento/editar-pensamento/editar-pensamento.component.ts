@@ -1,20 +1,24 @@
 import { Component, inject } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IPensamento } from '../../../models/pensamentos/pensamentos';
 import { PensamentoService } from '../pensamento.service';
 
+
 @Component({
-  selector: 'app-excluir-pensamento',
+  selector: 'app-editar-pensamento',
   standalone: true,
-  imports: [],
-  templateUrl: './excluir-pensamento.component.html',
-  styleUrl: './excluir-pensamento.component.css'
+  imports: [FormsModule],
+  templateUrl: './editar-pensamento.component.html',
+  styleUrl: './editar-pensamento.component.css'
 })
-export class ExcluirPensamentoComponent {
+export class EditarPensamentoComponent {
 
   private _service = inject(PensamentoService);
   private _router = inject(Router);
   private _route = inject(ActivatedRoute);
+
+  constructor() { }
 
   pensamento: IPensamento = {
     id: 0,
@@ -23,26 +27,21 @@ export class ExcluirPensamentoComponent {
     modelo: ''
   };
 
-  constructor() { }
-
   ngOnInit(): void {
     const id = this._route.snapshot.paramMap.get('id');
-    this._service.buscarPorId(parseInt(id!)).subscribe((pensamento) => {
+    this._service.buscarPorId(parseInt(id!)).subscribe((pensamento: IPensamento) => {
       this.pensamento = pensamento;
     });
   }
 
-  excluirPensamento() {
-    console.log(this.pensamento.id);
-    if (this.pensamento.id) {
-      this._service.excluir(this.pensamento.id).subscribe(() => {
-        this._router.navigate(['/listarPensamento']);
-      }
-      );
-    }
+  editarPensamento() {
+    this._service.editar(this.pensamento).subscribe(() => {
+      this._router.navigate(['/listarPensamento']);
+    });
   }
 
   cancelar() {
-    this._router.navigate(["/listarPensamento"]);
+    this._router.navigate(['/listarPensamento'])
   }
+
 }

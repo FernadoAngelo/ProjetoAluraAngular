@@ -4,7 +4,7 @@
 
     <p>Value of teste: {{ teste }}</p>
 
-    
+
     <!-- Two-Way Data Binding: atualização dinamica de status de variavel -->
     <input type="checkbox" [(ngModel)]="teste" />
 
@@ -17,7 +17,10 @@
 
     <br>
 
+    <p> {{ textoTeste }} </p>
+
     <button (click)="testeFunction()"> {{ buttonName }} </button>
+    <br>
 
     <!-- Property Binding:  -->
     <p> Nome: {{ nome }}</p>
@@ -30,7 +33,7 @@
     <!-- Event Binding: (evento) -->
     <button (click)="showFramework()">Show Framework</button>
 
-    
+
   </div>
   <img class="imagem" src="/assets/imagens/computador-cabecalho.png" alt="Imagem de um computador">
 </header>
